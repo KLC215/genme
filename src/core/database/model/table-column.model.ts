@@ -1,19 +1,11 @@
 import {Column} from '../database.interface'
 
 export class TableColumn {
-  private _tableName: string
-  private _entityName: string
-  private _entityFileName: string
-  private _columns: Column
-  private _routeName: string
-
-  constructor(tableName: string, entityName: string, entityFileName: string, columns: Column, routeName: string) {
-    this._tableName = tableName
-    this._entityName = entityName
-    this._entityFileName = entityFileName
-    this._columns = columns
-    this._routeName = routeName
-  }
+  private _tableName!: string
+  private _entityName!: string
+  private _entityFileName!: string
+  private _columns!: Column
+  private _routeName!: string
 
   get tableName(): string {
     return this._tableName
