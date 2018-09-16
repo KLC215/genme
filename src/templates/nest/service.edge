@@ -1,0 +1,13 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { {{ entityName }} } from './{{ entityFileName }}.entity';
+
+@Injectable()
+export class {{ entityName }}Service {
+  constructor(
+    @InjectRepository({{ entityName }})
+    private readonly {{ entityName }}Repository: Repository<{{ entityName }}>,
+  ) {}
+
+}

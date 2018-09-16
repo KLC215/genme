@@ -1,0 +1,14 @@
+import { Column, Entity, PrimaryGenerateColumn } from 'typeorm';
+
+@Entity({{ tableName }})
+export class {{ entityName }} {
+  @each(column in columns)
+    @if(column.columnKey === 'PRI')
+    @PrimaryGenerateColumn()
+    @else
+    @Column({})
+    @endif
+    {{ column.columnName }}: {{ convertType(column.type) }};
+
+  @endeach
+}
