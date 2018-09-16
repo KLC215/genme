@@ -5,8 +5,8 @@ import * as voca from 'voca'
 
 import DatabaseService from '../core/database/database.service'
 import {TableColumn} from '../core/database/model/table-column.model'
-import FileUtils from '../core/utils/file.utils'
-import TemplateUtils from '../core/utils/template.utils'
+import {FileUtils} from '../core/utils/file.utils'
+import {TemplateUtils} from '../core/utils/template.utils'
 
 import {Table} from './../core/database/database.interface'
 
@@ -91,7 +91,8 @@ export default class Nest extends Command {
     const columnsResult = await Promise.all(columns)
     const tableColumns: TableColumn[] = []
 
-    for (let i = 0, len = tables.length; i < len; i++) {
+    const len = tables.length
+    for (let i = 0; i < len; i++) {
       const tableName = tables[i]
       const entityName = voca.capitalize(voca.camelCase(tables[i]))
       const enityFileName = voca.kebabCase(tables[i])
@@ -127,17 +128,28 @@ export default class Nest extends Command {
       })
       const moduleContent = TemplateUtils.render('nest/module', {
         entityName: tableColumn.entityName,
-        entityFileName: tableColumn.entityFileName,
+        entityFileName: tableColumn.entityFileName
       })
 
       const path = `${process.cwd()}/${tableColumn.entityFileName}`
 
       FileUtils.createDirectoryIfNotExist(path)
-      FileUtils.writeFile(`${path}/${tableColumn.entityFileName}.controller.ts`, controllerContent)
-      FileUtils.writeFile(`${path}/${tableColumn.entityFileName}.service.ts`, serviceContent)
-      FileUtils.writeFile(`${path}/${tableColumn.entityFileName}.entity.ts`, entityContent)
-      FileUtils.writeFile(`${path}/${tableColumn.entityFileName}.module.ts`, moduleContent)
-
+      FileUtils.writeFile(
+        `${path}/${tableColumn.entityFileName}.controller.ts`,
+        controllerContent
+      )
+      FileUtils.writeFile(
+        `${path}/${tableColumn.entityFileName}.service.ts`,
+        serviceContent
+      )
+      FileUtils.writeFile(
+        `${path}/${tableColumn.entityFileName}.entity.ts`,
+        entityContent
+      )
+      FileUtils.writeFile(
+        `${path}/${tableColumn.entityFileName}.module.ts`,
+        moduleContent
+      )
     })
     cli.action.stop()
 

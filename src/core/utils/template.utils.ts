@@ -49,8 +49,8 @@ edge.global('convertType', (type: string) => {
   }
 })
 
-export default class TemplateUtils {
-  static render(template: string, data: object): string {
+export namespace TemplateUtils {
+  export function render(template: string, data: object): string {
     return edge.render(template, data)
   }
 }
