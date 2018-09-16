@@ -20,7 +20,7 @@ $ npm install -g genme
 $ genme COMMAND
 running command...
 $ genme (-v|--version|version)
-genme/0.0.0 darwin-x64 node-v10.8.0
+genme/0.0.1 darwin-x64 node-v10.8.0
 $ genme --help [COMMAND]
 USAGE
   $ genme COMMAND
@@ -66,7 +66,7 @@ OPTIONS
   --user=user          [default: root] Database username
 ```
 
-_See code: [src/commands/nest.ts](https://github.com/KLC215/genme/blob/v0.0.0/src/commands/nest.ts)_
+_See code: [src/commands/nest.ts](https://github.com/KLC215/genme/blob/v0.0.1/src/commands/nest.ts)_
 <!-- commandsstop -->
 
 # TODO
