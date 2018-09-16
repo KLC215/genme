@@ -1,14 +1,18 @@
 import { Column, Entity, PrimaryGenerateColumn } from 'typeorm';
 
-@Entity({{ tableName }})
+@Entity('{{ tableName }}')
 export class {{ entityName }} {
   @each(column in columns)
     @if(column.columnKey === 'PRI')
     @PrimaryGenerateColumn()
     @else
-    @Column({})
+      @if(column.dataLength)
+    @Column({ name: '{{ column.columnName }}', length: {{ column.dataLength }} })
+      @else
+    @Column({ name: '{{ column.columnName }}' })
+      @endif
     @endif
-    {{ column.columnName }}: {{ convertType(column.type) }};
+    {{ camelCase(column.columnName) }}: {{ convertType(column.type) }};
 
   @endeach
 }

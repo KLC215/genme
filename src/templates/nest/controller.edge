@@ -4,6 +4,6 @@ import { {{ entityName }}Service } from './{{ entityFileName }}.service';
 @Controller('{{ routeName }}')
 export class {{ entityName }}Controller {
   constructor(
-    private readonly {{ entityName }}Service: {{ entityName }}Service
+    private readonly {{ lowerFirst(entityName) }}Service: {{ entityName }}Service
   ) {}
 }
