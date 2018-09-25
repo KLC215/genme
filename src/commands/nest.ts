@@ -32,7 +32,7 @@ export default class Nest extends Command {
       default: 'root'
     }),
     // --database=VALUE
-    database: flags.string({description: 'Database name'}),
+    database: flags.string({description: 'Database name', required: true}),
     // --port=3306
     port: flags.integer({description: 'Database port', default: 3306})
   }
@@ -40,10 +40,6 @@ export default class Nest extends Command {
   async run() {
     const {flags} = this.parse(Nest)
     const {host, database, user, password, port} = flags
-
-    if (database === undefined) {
-      this.error('database option is required.')
-    }
 
     cli.action.start('Connecting database')
     // Init database connection
@@ -131,7 +127,7 @@ export default class Nest extends Command {
         entityFileName: tableColumn.entityFileName
       })
 
-      const path = `${process.cwd()}/${tableColumn.entityFileName}`
+      const path = `${process.cwd()}/src/${tableColumn.entityFileName}`
 
       FileUtils.createDirectoryIfNotExist(path)
       FileUtils.writeFile(
