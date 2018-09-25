@@ -80,11 +80,11 @@ export namespace DatabaseHelper {
 
     const len = tables.length
     for (let i = 0; i < len; i++) {
-      const tableName = tables[i]
-      const entityName = voca.capitalize(voca.camelCase(tables[i]))
-      const enityFileName = voca.kebabCase(tables[i])
+      const tableName = tables[i].toString()
+      const entityName = voca.capitalize(voca.camelCase(tables[i].toString()))
+      const enityFileName = voca.kebabCase(tables[i].toString())
       const columns = columnsResult[i]
-      const routeName = pluralize.plural(voca.camelCase(tables[i]))
+      const routeName = pluralize.plural(voca.camelCase(tables[i].toString()))
 
       const tableColumn: TableColumn = new TableColumn()
       tableColumn.tableName = tableName

@@ -1,7 +1,7 @@
 {
   "name": "genme",
   "description": "Generate to me the boring code",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "KLC215 @KLC215",
   "bin": {
     "genme": "./bin/run"
